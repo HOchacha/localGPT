@@ -2,8 +2,8 @@
 # Build as `docker build . -t localgpt`, requires BuildKit.
 # Run as `docker run -it --mount src="$HOME/.cache",target=/root/.cache,type=bind --gpus=all localgpt`, requires Nvidia container toolkit.
 
-FROM ubuntu22.04:latest
-RUN apt-get update && apt-get install -y software-properties-common
+FROM ubuntu:22.04
+RUN apt-get update && apt-get install -y software-properties-common && apt-get install ffmpeg libsm6 libxext6 -y
 RUN apt-get install -y g++-11 make python3 python-is-python3 pip
 # only copy what's needed at every step to optimize layer cache
 COPY ./requirements.txt .
