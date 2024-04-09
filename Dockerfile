@@ -17,5 +17,5 @@ COPY ingest.py constants.py ./
 ARG device_type=cpu
 RUN --mount=type=cache,target=/root/.cache python ingest.py --device_type $device_type
 COPY . .
-ENV device_type=cuda
+ENV device_type=cpu
 CMD python run_localGPT.py --device_type $device_type
